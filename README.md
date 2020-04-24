@@ -35,7 +35,7 @@ TPM(Total Productive Management)이라는 품질 관리론이 일본 업계에 �
 (옮긴이) WTF! What The F*ck을 줄인 말이다.
 
 ## Table of Contents
-- [01장 깨끗한 코드](https://)
+- [[01장] 깨끗한 코드](https://github.com/woochanleee/Clean-Code/tree/master/%5B01%EC%9E%A5%5D%20%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%BD%94%EB%93%9C)
 
 ## Update
 <hr />
