@@ -36,6 +36,7 @@ TPM(Total Productive Management)이라는 품질 관리론이 일본 업계에 �
 
 ## Table of Contents
 - [[01장] 깨끗한 코드](https://github.com/woochanleee/Clean-Code/tree/master/%5B01%EC%9E%A5%5D%20%EA%B9%A8%EB%81%97%ED%95%9C%20%EC%BD%94%EB%93%9C)
+- [[02장] 의미 있는 이름](https://github.com/woochanleee/Clean_Code/tree/master/%5B02%EC%9E%A5%5D%20%EC%9D%98%EB%AF%B8%20%EC%9E%88%EB%8A%94%20%EC%9D%B4%EB%A6%84)
 
 ## Update
 <hr />
@@ -46,3 +47,8 @@ TPM(Total Productive Management)이라는 품질 관리론이 일본 업계에 �
 +&nbsp;2020년 04월 25일 (토)
 - [01장] 깨끗한 코드 독서 완료.
 - [01장] 깨끗한 코드 정리 완료.
+
++&nbsp;2020년 04월 26일 (일)
+- 책 내용을 거의 그대로 정리하는 것 같아 [02장-16] 부터 이해한 내용을 바탕으로 나만의 언어로 정리 시작.
+- [02장] 의미 있는 이름 독서 완료.
+- [02장] 의미 있는 이름 정리 완료.
