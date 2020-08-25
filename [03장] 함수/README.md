@@ -105,6 +105,52 @@
 
 ## 부수 효과를 일으키지 마라!
 
+- 부수 효과는 거짓말이다. 함수에서 한 가지를 하겠다고 약속하고선 **남몰래** 다른 것도 하니까.
+
+```typescript
+class UserValidator {
+  private cryptoGrapher: Cryptographer;
+
+  public checkPassword(userName: string, password: string): boolean {
+    const user: User = UserGateway.findByName(userName);
+    if (user !== User.NULL) {
+      const codedPhrase: string = user.getPhraseEncodedByPassword();
+      const phrase: string = cryptographer.decrypt(codedPhrase, password);
+      if (phrase === 'Valid Password') {
+        Session.initialze();
+        return true;
+      }
+    }
+    return false;
+  }
+}
+```
+
+- 여기서 함수가 일으키는 부수 효과는 `Session.initialize()` 호출이다.
+- `checkPassword` 함수는 말 그대로 암호를 확인한다. 이름만 봐서는 세션을 초기화한다는 사실이 드러나지 않는다.
+- 세션을 초기화해도 되는 상황ㅇ만 호출이 가능하다. 만약 시간적인 결합이 필요하다면 함수 이름에 분명히 명시한다. `checkPasswordAndInitializeSession`이라는 이름이 훨씬 좋다.
+  - 물론 함수가 '한 가지'만 한다는 규칙을 위반하지만.
+
+### _출력 인수_
+
+- 일반적으로 우리는 인수를 함수 **입력** 으로 해석한다.
+
+`appendFooter(s);`
+
+- 이 함수는 무언가에 s를 바닥글로 첨부할까? 아니면 s에 바닥글을 첨부할까? 인수 s는 입력일까 출력일까?
+
+```typescript
+appendFooter(report: StringBuffer): void
+```
+
+- 인수 s가 출력 인수라는 사실은 분명하지만 함수 선언부를 찾아보고 나서야 알았다.
+- 출력 인수로 사용하라고 설계한 변수가 바로 this이다. 다시 말해, `appendFooter`는 다음과 같이 호출하는 방식이 좋다.
+
+`report.appendFooter()`
+
+- 일반적으로 출력 인수는 피해야 한다.
+- 함수에서 상태를 변경해야 한다면 함수가 속한 객체 상태를 변경하는 방식을 택한다.
+
 **[⬆ 위로가기](#목차)**
 
 ## 명령과 조회를 분리하라!
