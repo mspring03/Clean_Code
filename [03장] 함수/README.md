@@ -155,6 +155,27 @@ appendFooter(report: StringBuffer): void
 
 ## 명령과 조회를 분리하라!
 
+- 함수는 무언가를 수행하거나 뭔가에 답하거나 둘 중 하나만 해야 한다.
+
+`set(attribute: string, value: string): boolean`
+
+- 이 함수는 이름이 attribute인 속성을 찾아 value로 설정한 후 성공하면 true를 반환하고 실패하면 false를 반환한다. 그래서 다음과 같이 괴상한 코드가 나온다.
+
+`if (set('username', 'woochanleee')) { ... }`
+
+- "set"이라는 단어가 동사인지 형용사인지 분간하기 어렵다.
+- 함수를 구현한 개발자는 "set"을 동사로 의도했다. 하지만 **if 문에 넣고 보면 형용사로 느껴진다.**
+- 그래서 "username" 속성이 woochanleee로 설정되어 있다면... 으로 읽히게 된다.
+- set이라는 함수 이름을 `setAndCheckIfExists` 라고 바꾸는 방법도 있지만 if문에 넣고 보면 여전히 어색하다.
+- 진짜 해결책은 명력과 조회를 분리해 혼란을 애초에 뿌리뽑는 방법이다.
+
+```typescript
+if (attributeExists('username')) {
+  setAttribute('username', 'woochanleee');
+  ...
+}
+```
+
 **[⬆ 위로가기](#목차)**
 
 ## 오류 코드보다 예외를 사용하라!
